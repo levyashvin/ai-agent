@@ -19,6 +19,7 @@ if verbose_flag in sys.argv:
     verbose = True
     sys.argv.remove(verbose_flag)  # Remove --v from sys.argv to avoid issues with prompt
 
+user_prompt = ''
 # Get the user prompt from command-line arguments
 if len(sys.argv) > 1:
     user_prompt = sys.argv[1]  # Use the first argument as the user input
@@ -27,9 +28,7 @@ else:
     exit(1)
 
 # Creating message context
-message = [
-    types.Content(role='user', parts=[types.Part(text=user_prompt)])
-]
+message = [types.Content(role='user', parts=[types.Part(text=user_prompt)])]
 
 # Test response
 response = client.models.generate_content(
