@@ -10,9 +10,17 @@ from google import genai
 
 client = genai.Client(api_key=api_key)
 
+import sys
+
+if len(sys.argv) > 1:
+    contents = sys.argv[1:]
+else:
+    print('please enter a prompt')
+    exit(1)
+
 # Test response
 response = client.models.generate_content(
-    model='gemini-2.0-flash-001', contents='Why is Boot.dev such a great place to learn backend development? Use one paragraph maximum.'
+    model='gemini-2.0-flash-001', contents=contents
 )
 print(response.text)
 # Response's meta data
