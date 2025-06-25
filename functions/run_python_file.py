@@ -27,6 +27,9 @@ def run_python_file(working_directory, file_path):
             # Run the Python script with a timeout
             result = subprocess.run(['python', abs_fullpath], capture_output=True, text=True, timeout=timeout_duration)
 
+            print(type(result))
+            print(result)
+            
             output = ""
 
             # Handle stdout

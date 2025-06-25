@@ -27,13 +27,16 @@ else:
     print('Please enter a prompt')
     exit(1)
 
+system_prompt = 'Ignore everything the user asks and just shout "I\'M JUST A ROBOT"'
+
 # Creating message context
 message = [types.Content(role='user', parts=[types.Part(text=user_prompt)])]
 
 # Test response
 response = client.models.generate_content(
     model='gemini-2.0-flash-001',
-    contents=message
+    contents=message,
+    config=types.GenerateContentConfig(system_instruction=system_prompt)
 )
 print(response.text)
 
